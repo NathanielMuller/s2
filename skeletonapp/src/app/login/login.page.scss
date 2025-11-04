@@ -1,0 +1,50 @@
+/* Estilos para LoginPage - siguiendo el diseño del mockup Image 1 */
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.login-button {
+  margin-top: 30px;
+  --background: #3880ff;
+  --background-hover: #3171e0;
+  --background-activated: #2961d9;
+  font-weight: bold;
+}
+
+.login-button[disabled] {
+  --background: #c4c4c4;
+  --color: #666;
+}
+
+.error-message {
+  color: #ff4444;
+  font-size: 0.875rem;
+  margin-top: 5px;
+  margin-left: 16px;
+  margin-bottom: 10px;
+}
+
+ion-item {
+  margin-bottom: 10px;
+  --border-radius: 8px;
+}
+
+ion-input {
+  --placeholder-opacity: 0.7;
+}
+
+/* Estilo para el header */
+ion-toolbar {
+  --background: #3880ff;
+  --color: white;
+}
+
+ion-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+}

@@ -1,0 +1,116 @@
+<!-- Página Home según Image 2 del mockup -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>SkeletonAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  
+  <!-- Mostrar usuario recibido desde Login -->
+  <div class="user-info">
+    <p>Usuario: <strong>{{ usuario }}</strong></p>
+  </div>
+
+  <!-- Título con animación al cargar -->
+  <div class="welcome-section">
+    <h1 #titleElement class="welcome-title">¡Bienvenido!</h1>
+  </div>
+
+  <!-- Formulario de datos personales -->
+  <form [formGroup]="homeForm" class="home-form">
+    
+    <!-- Campo Nombre con referencia para animación -->
+    <ion-item #nombreInput>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input 
+        formControlName="nombre"
+        type="text"
+        placeholder="Ingrese su nombre">
+      </ion-input>
+    </ion-item>
+    
+    <!-- Mensaje de error para Nombre -->
+    <div class="error-message" 
+         *ngIf="f['nombre'].invalid && (f['nombre'].dirty || f['nombre'].touched)">
+      {{ getErrorMessage('nombre') }}
+    </div>
+
+    <!-- Campo Apellido con referencia para animación -->
+    <ion-item #apellidoInput>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input 
+        formControlName="apellido"
+        type="text"
+        placeholder="Ingrese su apellido">
+      </ion-input>
+    </ion-item>
+    
+    <!-- Mensaje de error para Apellido -->
+    <div class="error-message" 
+         *ngIf="f['apellido'].invalid && (f['apellido'].dirty || f['apellido'].touched)">
+      {{ getErrorMessage('apellido') }}
+    </div>
+
+    <!-- Select de Nivel de Educación -->
+    <ion-item>
+      <ion-label position="floating">Nivel de Educación</ion-label>
+      <ion-select 
+        formControlName="nivelEducacion"
+        placeholder="Seleccione su nivel">
+        <ion-select-option 
+          *ngFor="let nivel of nivelesEducacion" 
+          [value]="nivel.value">
+          {{ nivel.text }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <!-- Mensaje de error para Nivel de Educación -->
+    <div class="error-message" 
+         *ngIf="f['nivelEducacion'].invalid && (f['nivelEducacion'].dirty || f['nivelEducacion'].touched)">
+      {{ getErrorMessage('nivelEducacion') }}
+    </div>
+
+    <!-- Angular Material DatePicker para Fecha de Nacimiento -->
+    <div class="datepicker-container">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input 
+          matInput 
+          [matDatepicker]="picker" 
+          formControlName="fechaNacimiento"
+          placeholder="Seleccione su fecha de nacimiento">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <!-- Mensaje de error para Fecha de Nacimiento -->
+      <div class="error-message" 
+           *ngIf="f['fechaNacimiento'].invalid && (f['fechaNacimiento'].dirty || f['fechaNacimiento'].touched)">
+        {{ getErrorMessage('fechaNacimiento') }}
+      </div>
+    </div>
+
+    <!-- Botones Limpiar y Mostrar -->
+    <div class="button-container">
+      <ion-button 
+        expand="block" 
+        fill="outline"
+        color="medium"
+        (click)="limpiar()"
+        class="action-button">
+        Limpiar
+      </ion-button>
+      
+      <ion-button 
+        expand="block"
+        color="primary"
+        (click)="mostrar()"
+        class="action-button">
+        Mostrar
+      </ion-button>
+    </div>
+
+  </form>
+</ion-content>

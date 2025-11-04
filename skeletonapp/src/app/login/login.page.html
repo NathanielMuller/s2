@@ -1,0 +1,59 @@
+<!-- Página de Login según Image 1 del mockup -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>SkeletonAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="login-container">
+    
+    <!-- Formulario de Login con validaciones reactivas -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Campo Usuario: alfanumérico, 3-8 caracteres -->
+      <ion-item>
+        <ion-label position="floating">Usuario</ion-label>
+        <ion-input 
+          formControlName="usuario"
+          type="text"
+          placeholder="Ingrese su usuario">
+        </ion-input>
+      </ion-item>
+      
+      <!-- Mostrar mensaje de error para usuario -->
+      <div class="error-message" 
+           *ngIf="f['usuario'].invalid && (f['usuario'].dirty || f['usuario'].touched)">
+        {{ getErrorMessage('usuario') }}
+      </div>
+
+      <!-- Campo Password: exactamente 4 dígitos, mostrar como **** -->
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input 
+          formControlName="password"
+          type="password"
+          inputmode="numeric"
+          maxlength="4"
+          placeholder="****">
+        </ion-input>
+      </ion-item>
+      
+      <!-- Mostrar mensaje de error para password -->
+      <div class="error-message" 
+           *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+        {{ getErrorMessage('password') }}
+      </div>
+
+      <!-- Botón Ingresar - deshabilitado si form inválido -->
+      <ion-button 
+        expand="block" 
+        type="submit"
+        [disabled]="!loginForm.valid"
+        class="login-button">
+        Ingresar
+      </ion-button>
+      
+    </form>
+  </div>
+</ion-content>
