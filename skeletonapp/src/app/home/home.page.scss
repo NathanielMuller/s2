@@ -98,6 +98,60 @@ ion-title {
   }
 }
 
+/* Estilos globales para el DatePicker - quitar transparencia */
+::ng-deep {
+  /* Modal/overlay del calendario */
+  .mat-datepicker-content {
+    background-color: white !important;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4) !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Fondo del overlay */
+  .cdk-overlay-backdrop {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  }
+  
+  /* Header del calendario */
+  .mat-calendar-header {
+    background-color: #3880ff !important;
+    color: white !important;
+  }
+  
+  /* Botones de navegación del calendario */
+  .mat-calendar-previous-button,
+  .mat-calendar-next-button {
+    color: white !important;
+  }
+  
+  /* Tabla del calendario */
+  .mat-calendar-table {
+    background-color: white !important;
+  }
+  
+  /* Celdas del calendario */
+  .mat-calendar-body-cell-content {
+    background-color: transparent;
+    color: #333 !important;
+  }
+  
+  /* Día seleccionado */
+  .mat-calendar-body-selected {
+    background-color: #3880ff !important;
+    color: white !important;
+  }
+  
+  /* Día de hoy */
+  .mat-calendar-body-today:not(.mat-calendar-body-selected) {
+    border-color: #3880ff !important;
+  }
+  
+  /* Hover en las celdas */
+  .mat-calendar-body-cell:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content {
+    background-color: #e3f2fd !important;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .welcome-title {
